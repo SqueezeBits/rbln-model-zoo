@@ -37,3 +37,5 @@ default_cards:
 overrides:
   ATOM/huggingface/transformers/sentence-similarity/embeddinggemma-2:
     cards: [RBLN-CA25]
+  ATOM/pytorch/audio/automatic-speech-recognition/omnilingual-asr-1b-v2:
+    cards: [RBLN-CA25]
