@@ -34,4 +34,8 @@ default_cards:
 #     cards: [RBLN-CA25]                  # CA25 only
 #   ATOM/huggingface/transformers/.../model-b:
 #     cards: [RBLN-CA22]
-overrides: {}
+overrides:
+  ATOM/huggingface/transformers/sentence-similarity/embeddinggemma-2:
+    cards: [RBLN-CA25]
+  ATOM/pytorch/audio/automatic-speech-recognition/omnilingual-asr-1b-v2:
+    cards: [RBLN-CA25]

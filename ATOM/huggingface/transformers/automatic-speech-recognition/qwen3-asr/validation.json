@@ -1,0 +1,935 @@
+{
+  "validation_date": "2026-10-21",
+  "model_id": "Qwen/Qwen3-ASR-1.7B-hf",
+  "model_revision": "bcd2b5b7f32b480ab5790554cfa8347f246a14f3",
+  "source_files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 1570,
+      "sha256": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930"
+    },
+    {
+      "path": "README.md",
+      "bytes": 16538,
+      "sha256": "427b9a6a4a32477e9df8790ef92f5cbcde790ee148ee5dd8c36f77d9556998a2"
+    },
+    {
+      "path": "chat_template.jinja",
+      "bytes": 1434,
+      "sha256": "f50e6b694fbf4a683206e37869990d68333fe95d285730f084c838a34b0d98c2"
+    },
+    {
+      "path": "config.json",
+      "bytes": 2399,
+      "sha256": "117ac8e63e2af7cae3665e5a632d6eb03f5f384915519ceb6403c15ec6533f63"
+    },
+    {
+      "path": "generation_config.json",
+      "bytes": 165,
+      "sha256": "9939fc9388b79bd70757f938b87381e817173d6a6158f5af6506c0b73e775c3c"
+    },
+    {
+      "path": "model.safetensors",
+      "bytes": 4076193080,
+      "sha256": "2db53c7d81bd9b8cbc6a074e89be2c968a0d373fb4ee68bb1b1e14f7042dfee1"
+    },
+    {
+      "path": "processor_config.json",
+      "bytes": 487,
+      "sha256": "bc0b230081b44e629dd5b9045b78495615c1831b4b9f4cffe97bd37e82a6156a"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 11429653,
+      "sha256": "fe1fad59be22a41ee293363fcf95fdedbc7c93f3b49270b1d2e18bd1399a7a05"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 998,
+      "sha256": "945e980986de2ca7768f3326bfdbb4fbea3406f972b8ae0be233089f2b253c11"
+    }
+  ],
+  "target": {
+    "npu": "RBLN-CA25",
+    "device_count": 1,
+    "driver_version": "3.4.1"
+  },
+  "versions": {
+    "torch": "2.13.0+cpu",
+    "transformers": "5.15.1",
+    "tokenizers": "0.22.1",
+    "optimum-rbln": "0.12.1a2",
+    "rebel-compiler": "0.11.0.post1",
+    "numpy": "2.5.2",
+    "soundfile": "0.14.0"
+  },
+  "optimum_source_commit": "a6a709ed0727f87cabfebf191b6a89b141f80731",
+  "optimum_package_version_note": "Source archive build used SCM fallback version 0.12.1a2; source commit identifies the code.",
+  "compiler_wheel_sha256": "26e27f45e2db63bc69b22831d91762e47f7b4235da01e293c61c82101468fcad",
+  "compatibility_warning": "optimum-rbln 0.12.1a2 and rebel-compiler 0.11.0.post1 have different base versions; this run is smoke evidence, not a supported-version matrix.",
+  "fixture": {
+    "sha256": "30885601173f96b0d8ddd020dc959b055c6c1582b85a33e3fcab8c4b08ed94c2",
+    "sample_rate": 16000,
+    "duration_seconds": 10.435,
+    "channels": 1
+  },
+  "compile": {
+    "entrypoint": "RBLNAutoModelForMultimodalLM.from_pretrained(export=True)",
+    "precision": "checkpoint auto selected bfloat16",
+    "batch_size": 1,
+    "max_seq_len": 1024,
+    "attn_impl": "eager",
+    "prefill_chunk_size": 128,
+    "kvcache_block_size": 1024,
+    "kvcache_num_blocks": 1,
+    "audio_num_windows": 1,
+    "seconds": 91.95156662445515,
+    "artifact_files": [
+      {
+        "path": "audio_tower/compiled_model.rbln",
+        "bytes": 653063455,
+        "sha256": "8f9101084ecba887a461538948434b595486117b9232ff7c7d51cd12e2e674b4"
+      },
+      {
+        "path": "audio_tower/config.json",
+        "bytes": 569,
+        "sha256": "2e93f8f24f6146461acb38ed7d7c568277af82705528df9288f583963782e331"
+      },
+      {
+        "path": "audio_tower/rbln_config.json",
+        "bytes": 602,
+        "sha256": "6520244e204f613fcea00f031372ad0c68c950016ce4839a8a16473388db13a5"
+      },
+      {
+        "path": "chat_template.jinja",
+        "bytes": 1434,
+        "sha256": "f50e6b694fbf4a683206e37869990d68333fe95d285730f084c838a34b0d98c2"
+      },
+      {
+        "path": "config.json",
+        "bytes": 2444,
+        "sha256": "c14a41063503d53cfa276590983d0ac4e2d5cfd4e92c45798d98cddce3a160d0"
+      },
+      {
+        "path": "decoder_batch_1.rbln",
+        "bytes": 14479876,
+        "sha256": "e93d6e9440799a8ccc1ec13598a296965661ec57c5de85eb02f46f693c37007b"
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 165,
+        "sha256": "9939fc9388b79bd70757f938b87381e817173d6a6158f5af6506c0b73e775c3c"
+      },
+      {
+        "path": "prefill.rbln",
+        "bytes": 3459030260,
+        "sha256": "74f9d4e6f33791227e7d943c5e4aa4c4cb6309a9823d5c93bacbfe899d4e8991"
+      },
+      {
+        "path": "preprocessor_config.json",
+        "bytes": 356,
+        "sha256": "68c5de218c110e61edded1fea3ecf5d6c5adf672b904db079178e08b86267542"
+      },
+      {
+        "path": "processor_config.json",
+        "bytes": 487,
+        "sha256": "bc0b230081b44e629dd5b9045b78495615c1831b4b9f4cffe97bd37e82a6156a"
+      },
+      {
+        "path": "rbln_config.json",
+        "bytes": 33962,
+        "sha256": "27bbac2862c7e524b429a78a2e297d35d96d764d48118f612882a56a51081f5f"
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 11429653,
+        "sha256": "fe1fad59be22a41ee293363fcf95fdedbc7c93f3b49270b1d2e18bd1399a7a05"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 998,
+        "sha256": "945e980986de2ca7768f3326bfdbb4fbea3406f972b8ae0be233089f2b253c11"
+      },
+      {
+        "path": "torch_artifacts.pth",
+        "bytes": 622331617,
+        "sha256": "f2d5663fbf93163dbdd1032a9a841348a95bc690cb56fa4db02e8397df845b17"
+      }
+    ],
+    "encoder_input_info": [
+      [
+        "input_features",
+        [
+          8,
+          1,
+          128,
+          100
+        ],
+        "bfloat16"
+      ],
+      [
+        "attn_mask",
+        [
+          1,
+          1,
+          1,
+          104
+        ],
+        "bfloat16"
+      ]
+    ]
+  },
+  "encoder_cases": [
+    {
+      "audio_seconds": 1.5,
+      "input_feature_shape": [
+        1,
+        128,
+        200
+      ],
+      "valid_feature_lengths": [
+        150
+      ],
+      "output_shape": [
+        20,
+        2048
+      ],
+      "npu_runtime_calls": 1
+    },
+    {
+      "audio_seconds": 4.0,
+      "input_feature_shape": [
+        1,
+        128,
+        400
+      ],
+      "valid_feature_lengths": [
+        400
+      ],
+      "output_shape": [
+        52,
+        2048
+      ],
+      "npu_runtime_calls": 1
+    },
+    {
+      "audio_seconds": 7.9,
+      "input_feature_shape": [
+        1,
+        128,
+        800
+      ],
+      "valid_feature_lengths": [
+        790
+      ],
+      "output_shape": [
+        103,
+        2048
+      ],
+      "npu_runtime_calls": 1
+    },
+    {
+      "audio_seconds": 8.0,
+      "input_feature_shape": [
+        1,
+        128,
+        800
+      ],
+      "valid_feature_lengths": [
+        800
+      ],
+      "output_shape": [
+        104,
+        2048
+      ],
+      "npu_runtime_calls": 1
+    },
+    {
+      "audio_seconds": 8.1,
+      "input_feature_shape": [
+        1,
+        128,
+        900
+      ],
+      "valid_feature_lengths": [
+        810
+      ],
+      "output_shape": [
+        106,
+        2048
+      ],
+      "npu_runtime_calls": 2
+    },
+    {
+      "audio_seconds": 12.0,
+      "input_feature_shape": [
+        1,
+        128,
+        1200
+      ],
+      "valid_feature_lengths": [
+        1200
+      ],
+      "output_shape": [
+        156,
+        2048
+      ],
+      "npu_runtime_calls": 2
+    },
+    {
+      "audio_seconds": [
+        1.5,
+        12.0
+      ],
+      "input_feature_shape": [
+        2,
+        128,
+        1200
+      ],
+      "valid_feature_lengths": [
+        150,
+        1200
+      ],
+      "output_shape": [
+        176,
+        2048
+      ],
+      "npu_runtime_calls": 4
+    }
+  ],
+  "reload": {
+    "separate_process": true,
+    "export": false,
+    "seconds": 2.619022913277149,
+    "blocked_functions": [
+      "rebel.compile",
+      "rebel.compile_from_torch",
+      "AutoModelForMultimodalLM.from_pretrained"
+    ],
+    "compiler_calls": 0,
+    "cpu_source_weight_loads": 0,
+    "cpu_reference_loaded_before_guard": true,
+    "actual_encoder_runtime": "rebel.sync_runtime.SyncRuntime",
+    "actual_text_runtimes": [
+      "rebel.sync_runtime.SyncRuntime",
+      "rebel.sync_runtime.SyncRuntime"
+    ]
+  },
+  "standalone_saved_encoder": {
+    "standalone_load_seconds": 0.4245057525113225,
+    "output_shape": [
+      136,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "runtime_type": "<class 'rebel.sync_runtime.SyncRuntime'>",
+    "parent_output_exact_equal": true,
+    "output_float32_sha256": "c1d86011700ad1d638d92aca1ddeb56cfdbd077b04bf579bf8c7c8705cffe715",
+    "compiler_calls": 0,
+    "cpu_model_loads": 0
+  },
+  "references": {
+    "bf16_sdpa": {
+      "dtype": "bfloat16",
+      "attention": "sdpa",
+      "encoder_metrics": [
+        {
+          "audio_seconds": 1.5,
+          "max_abs": 0.0037841796875,
+          "mean_abs": 0.0002806195989251137,
+          "relative_l2": 0.021702172234654427,
+          "cosine": 0.9998103380203247,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 4.0,
+          "max_abs": 0.00244140625,
+          "mean_abs": 0.00019444312783889472,
+          "relative_l2": 0.01455687079578638,
+          "cosine": 0.9998970031738281,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 7.9,
+          "max_abs": 0.00439453125,
+          "mean_abs": 0.00021295362967066467,
+          "relative_l2": 0.01763371005654335,
+          "cosine": 0.9998452067375183,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 8.0,
+          "max_abs": 0.0045166015625,
+          "mean_abs": 0.00021084297623019665,
+          "relative_l2": 0.017329489812254906,
+          "cosine": 0.9998502731323242,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 8.1,
+          "max_abs": 0.002685546875,
+          "mean_abs": 0.00021224012016318738,
+          "relative_l2": 0.016316618770360947,
+          "cosine": 0.999871015548706,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 12.0,
+          "max_abs": 0.006439208984375,
+          "mean_abs": 0.0002271185803692788,
+          "relative_l2": 0.018813366070389748,
+          "cosine": 0.9998126029968262,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": [
+            1.5,
+            12.0
+          ],
+          "max_abs": 0.006439208984375,
+          "mean_abs": 0.00022934169101063162,
+          "relative_l2": 0.018764322623610497,
+          "cosine": 0.9998087882995605,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        }
+      ],
+      "all_encoder_cases_close_at_1e_3": false,
+      "min_cosine": 0.9998087882995605,
+      "max_relative_l2": 0.021702172234654427,
+      "greedy_token_ids_exact_equal": false,
+      "greedy_parsed_transcript_exact_equal": false,
+      "normalized_words_equal": true,
+      "cpu_transcript": [
+        {
+          "language": "English",
+          "transcription": "He hoped there would be stew for dinner, turnips and carrots, and bruised potatoes and fat mutton pieces to be ladled out in thick, peppered, flour-fattened sauce."
+        }
+      ],
+      "npu_transcript": [
+        {
+          "language": "English",
+          "transcription": "He hoped there would be stew for dinner, turnips and carrots, and bruised potatoes, and fat mutton pieces to be ladled out in thick, peppered, flour-fattened sauce."
+        }
+      ],
+      "cpu_generated_ids": [
+        [
+          11528,
+          6364,
+          151704,
+          1519,
+          25189,
+          1052,
+          1035,
+          387,
+          60343,
+          369,
+          13856,
+          11,
+          2484,
+          3077,
+          323,
+          61417,
+          11,
+          323,
+          42000,
+          4056,
+          34167,
+          323,
+          8664,
+          296,
+          959,
+          9666,
+          311,
+          387,
+          57625,
+          832,
+          700,
+          304,
+          12045,
+          11,
+          24353,
+          291,
+          11,
+          19828,
+          2220,
+          1587,
+          6758,
+          19187,
+          13,
+          151645
+        ]
+      ],
+      "npu_generated_ids": [
+        [
+          11528,
+          6364,
+          151704,
+          1519,
+          25189,
+          1052,
+          1035,
+          387,
+          60343,
+          369,
+          13856,
+          11,
+          2484,
+          3077,
+          323,
+          61417,
+          11,
+          323,
+          42000,
+          4056,
+          34167,
+          11,
+          323,
+          8664,
+          296,
+          959,
+          9666,
+          311,
+          387,
+          57625,
+          832,
+          700,
+          304,
+          12045,
+          11,
+          24353,
+          291,
+          11,
+          19828,
+          2220,
+          1587,
+          6758,
+          19187,
+          13,
+          151645
+        ]
+      ]
+    },
+    "bf16_eager": {
+      "dtype": "bfloat16",
+      "attention": "eager",
+      "encoder_metrics": [
+        {
+          "audio_seconds": 1.5,
+          "max_abs": 0.00274658203125,
+          "mean_abs": 0.00024153846607077867,
+          "relative_l2": 0.018231645226478577,
+          "cosine": 0.9998645782470703,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 4.0,
+          "max_abs": 0.0020751953125,
+          "mean_abs": 0.00019581765809562057,
+          "relative_l2": 0.01434738002717495,
+          "cosine": 0.9999009966850281,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 7.9,
+          "max_abs": 0.0078125,
+          "mean_abs": 0.0002713458379730582,
+          "relative_l2": 0.02609994076192379,
+          "cosine": 0.9996582269668579,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 8.0,
+          "max_abs": 0.0116729736328125,
+          "mean_abs": 0.0003661941736936569,
+          "relative_l2": 0.03849509730935097,
+          "cosine": 0.9992612600326538,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 8.1,
+          "max_abs": 0.012420654296875,
+          "mean_abs": 0.0003192409931216389,
+          "relative_l2": 0.033649880439043045,
+          "cosine": 0.999449610710144,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 12.0,
+          "max_abs": 0.007110595703125,
+          "mean_abs": 0.0002498892426956445,
+          "relative_l2": 0.02149682305753231,
+          "cosine": 0.9997567534446716,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": [
+            1.5,
+            12.0
+          ],
+          "max_abs": 0.007110595703125,
+          "mean_abs": 0.0002469387836754322,
+          "relative_l2": 0.020931236445903778,
+          "cosine": 0.9997637867927551,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        }
+      ],
+      "all_encoder_cases_close_at_1e_3": false,
+      "min_cosine": 0.9992612600326538,
+      "max_relative_l2": 0.03849509730935097,
+      "greedy_token_ids_exact_equal": true,
+      "greedy_parsed_transcript_exact_equal": true,
+      "normalized_words_equal": true,
+      "cpu_transcript": [
+        {
+          "language": "English",
+          "transcription": "He hoped there would be stew for dinner, turnips and carrots, and bruised potatoes, and fat mutton pieces to be ladled out in thick, peppered, flour-fattened sauce."
+        }
+      ],
+      "npu_transcript": [
+        {
+          "language": "English",
+          "transcription": "He hoped there would be stew for dinner, turnips and carrots, and bruised potatoes, and fat mutton pieces to be ladled out in thick, peppered, flour-fattened sauce."
+        }
+      ],
+      "cpu_generated_ids": [
+        [
+          11528,
+          6364,
+          151704,
+          1519,
+          25189,
+          1052,
+          1035,
+          387,
+          60343,
+          369,
+          13856,
+          11,
+          2484,
+          3077,
+          323,
+          61417,
+          11,
+          323,
+          42000,
+          4056,
+          34167,
+          11,
+          323,
+          8664,
+          296,
+          959,
+          9666,
+          311,
+          387,
+          57625,
+          832,
+          700,
+          304,
+          12045,
+          11,
+          24353,
+          291,
+          11,
+          19828,
+          2220,
+          1587,
+          6758,
+          19187,
+          13,
+          151645
+        ]
+      ],
+      "npu_generated_ids": [
+        [
+          11528,
+          6364,
+          151704,
+          1519,
+          25189,
+          1052,
+          1035,
+          387,
+          60343,
+          369,
+          13856,
+          11,
+          2484,
+          3077,
+          323,
+          61417,
+          11,
+          323,
+          42000,
+          4056,
+          34167,
+          11,
+          323,
+          8664,
+          296,
+          959,
+          9666,
+          311,
+          387,
+          57625,
+          832,
+          700,
+          304,
+          12045,
+          11,
+          24353,
+          291,
+          11,
+          19828,
+          2220,
+          1587,
+          6758,
+          19187,
+          13,
+          151645
+        ]
+      ]
+    },
+    "fp32_eager": {
+      "dtype": "float32",
+      "attention": "eager",
+      "encoder_metrics": [
+        {
+          "audio_seconds": 1.5,
+          "max_abs": 0.0023548807948827744,
+          "mean_abs": 0.00019912366406060755,
+          "relative_l2": 0.015088841319084167,
+          "cosine": 0.9999068379402161,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 4.0,
+          "max_abs": 0.0018385425209999084,
+          "mean_abs": 0.00014657250721938908,
+          "relative_l2": 0.010707829147577286,
+          "cosine": 0.9999477863311768,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 7.9,
+          "max_abs": 0.002397448755800724,
+          "mean_abs": 0.00015831613563932478,
+          "relative_l2": 0.012382306158542633,
+          "cosine": 0.9999296069145203,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 8.0,
+          "max_abs": 0.004237048327922821,
+          "mean_abs": 0.0001836029696278274,
+          "relative_l2": 0.01545401569455862,
+          "cosine": 0.9998871088027954,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 8.1,
+          "max_abs": 0.0037479326128959656,
+          "mean_abs": 0.000188372127013281,
+          "relative_l2": 0.01546497456729412,
+          "cosine": 0.999887228012085,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": 12.0,
+          "max_abs": 0.0030505135655403137,
+          "mean_abs": 0.00017984806618187577,
+          "relative_l2": 0.014253045432269573,
+          "cosine": 0.9999037384986877,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        },
+        {
+          "audio_seconds": [
+            1.5,
+            12.0
+          ],
+          "max_abs": 0.0030505135655403137,
+          "mean_abs": 0.00018066410848405212,
+          "relative_l2": 0.01425155345350504,
+          "cosine": 0.9999011158943176,
+          "finite": true,
+          "allclose_atol_1e-3_rtol_1e-3": false
+        }
+      ],
+      "all_encoder_cases_close_at_1e_3": false,
+      "min_cosine": 0.9998871088027954,
+      "max_relative_l2": 0.01546497456729412,
+      "greedy_token_ids_exact_equal": false,
+      "greedy_parsed_transcript_exact_equal": false,
+      "normalized_words_equal": true,
+      "cpu_transcript": [
+        {
+          "language": "English",
+          "transcription": "He hoped there would be stew for dinner, turnips and carrots, and bruised potatoes and fat mutton pieces to be ladled out in thick, peppered, flour-fattened sauce."
+        }
+      ],
+      "npu_transcript": [
+        {
+          "language": "English",
+          "transcription": "He hoped there would be stew for dinner, turnips and carrots, and bruised potatoes, and fat mutton pieces to be ladled out in thick, peppered, flour-fattened sauce."
+        }
+      ],
+      "cpu_generated_ids": [
+        [
+          11528,
+          6364,
+          151704,
+          1519,
+          25189,
+          1052,
+          1035,
+          387,
+          60343,
+          369,
+          13856,
+          11,
+          2484,
+          3077,
+          323,
+          61417,
+          11,
+          323,
+          42000,
+          4056,
+          34167,
+          323,
+          8664,
+          296,
+          959,
+          9666,
+          311,
+          387,
+          57625,
+          832,
+          700,
+          304,
+          12045,
+          11,
+          24353,
+          291,
+          11,
+          19828,
+          2220,
+          1587,
+          6758,
+          19187,
+          13,
+          151645
+        ]
+      ],
+      "npu_generated_ids": [
+        [
+          11528,
+          6364,
+          151704,
+          1519,
+          25189,
+          1052,
+          1035,
+          387,
+          60343,
+          369,
+          13856,
+          11,
+          2484,
+          3077,
+          323,
+          61417,
+          11,
+          323,
+          42000,
+          4056,
+          34167,
+          11,
+          323,
+          8664,
+          296,
+          959,
+          9666,
+          311,
+          387,
+          57625,
+          832,
+          700,
+          304,
+          12045,
+          11,
+          24353,
+          291,
+          11,
+          19828,
+          2220,
+          1587,
+          6758,
+          19187,
+          13,
+          151645
+        ]
+      ]
+    }
+  },
+  "timing": {
+    "kind": "host wall clock, unprofiled",
+    "audio_seconds": 10.435,
+    "encoder_seconds": [
+      0.012553215026855469,
+      0.012305178679525852,
+      0.012265670113265514,
+      0.012254228815436363,
+      0.01225114893168211
+    ],
+    "encoder_median_seconds": 0.012265670113265514,
+    "scope": "encoder call only; excludes feature extraction and text generation"
+  },
+  "trace": {
+    "captured": true,
+    "format": "Chrome Trace",
+    "activities": [
+      "CPU"
+    ],
+    "native_pb_profiler_used": false
+  },
+  "limitations": [
+    "One public English fixture, clipped or repeated to exercise lengths; no corpus WER/CER measurement.",
+    "Strict encoder allclose at atol=rtol=1e-3 is false in every reference comparison.",
+    "Greedy exact parity is reference-backend dependent; punctuation differs against BF16 SDPA and FP32 eager.",
+    "Only batch-1 decoder/1024-token eager/one-window encoder smoke was compiled; compile.py defaults were not benchmarked.",
+    "No general cross-SDK artifact portability claim."
+  ],
+  "python_version": "3.12.3",
+  "checks": {
+    "native_parent_export_and_save": true,
+    "compiled_encoder_and_projector_present": true,
+    "separate_process_reload_without_compile_or_source_weight_load": true,
+    "actual_npu_runtime_execution": true,
+    "standalone_saved_encoder_matches_parent_exactly": true,
+    "length_and_mixed_batch_output_shapes": true,
+    "strict_encoder_allclose_at_1e_3": false,
+    "greedy_exact_for_all_reference_backends": false,
+    "normalized_words_equal_for_all_reference_backends": true
+  }
+}

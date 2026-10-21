@@ -1,0 +1,546 @@
+{
+  "date": "2026-10-21",
+  "model": "omniASR_LLM_1B_v2",
+  "hardware": {
+    "npu": "RBLN-CA25",
+    "num_devices": 1,
+    "kmd": "3.4.1"
+  },
+  "versions": {
+    "python": "3.12.3",
+    "torch": "2.14.1+cpu",
+    "transformers": "5.20.1",
+    "optimum-rbln": "0.12.1a3.dev14+ga6a709ed0",
+    "rebel-compiler": "0.11.0.post1",
+    "sentencepiece": "0.2.1",
+    "numpy": "2.5.4",
+    "soundfile": "0.14.0"
+  },
+  "upstream_revision": "81f51e224ce9e74b02cc2a3eaf21b2d91d743455",
+  "optimum_revision": "a6a709ed0727f87cabfebf191b6a89b141f80731",
+  "source_files": [
+    {
+      "name": "omniASR-LLM-1B-v2.pt",
+      "url": "https://dl.fbaipublicfiles.com/mms/omniASR-LLM-1B-v2.pt",
+      "sha256": "cceb4d9ebac3d168a6af6b26c62ce11bafc562b38976c6bfa87e7d60422c6da5",
+      "size": 9118733852
+    },
+    {
+      "name": "tokenizer.model",
+      "url": "https://dl.fbaipublicfiles.com/mms/omniASR_tokenizer_written_v2.model",
+      "sha256": "8aa11a1092142ef472537476ef6e76541123e2f0d789b79f3ebd119008240b1e",
+      "size": 91481
+    },
+    {
+      "name": "languages.parquet",
+      "url": "https://raw.githubusercontent.com/facebookresearch/omnilingual-asr/81f51e224ce9e74b02cc2a3eaf21b2d91d743455/src/omnilingual_asr/models/wav2vec2_llama/languges_lookup_table.parquet",
+      "sha256": "1f5e1486c455a9ab6e492c0b187e538a5c3736e876e20e7417ae6678a034f5b8",
+      "size": 20504
+    }
+  ],
+  "sample": {
+    "utterance": "6930-75918-0000",
+    "url": "https://www.openslr.org/resources/12/test-clean.tar.gz",
+    "license": "CC BY 4.0",
+    "dataset": "LibriSpeech, Vassil Panayotov et al.",
+    "source_page": "https://www.openslr.org/12",
+    "audio_sha256": "9ce35224156f071ab58eb7feb8a5ceae600f6f9f353da2a6cbf797b6b1ac8a23",
+    "reference": "CONCORD RETURNED TO ITS PLACE AMIDST THE TENTS"
+  },
+  "artifact_completeness_passed": true,
+  "encoder_key_mask": "boolean",
+  "encoder_graphs": [
+    {
+      "seconds": 5,
+      "inputs": [
+        {
+          "dtype": "float32",
+          "name": "waveform",
+          "shape": [
+            1,
+            80000
+          ]
+        },
+        {
+          "dtype": "float32",
+          "name": "frame_mask",
+          "shape": [
+            1,
+            249
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "dtype": "float32",
+          "shape": [
+            1,
+            249,
+            4096
+          ]
+        }
+      ],
+      "subgraph": {
+        "stats": [
+          {
+            "compile_id": 0,
+            "device_func_count": 1,
+            "host_op_reason": {}
+          }
+        ]
+      },
+      "compile_and_runtime_passed": true
+    },
+    {
+      "seconds": 10,
+      "inputs": [
+        {
+          "dtype": "float32",
+          "name": "waveform",
+          "shape": [
+            1,
+            160000
+          ]
+        },
+        {
+          "dtype": "float32",
+          "name": "frame_mask",
+          "shape": [
+            1,
+            499
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "dtype": "float32",
+          "shape": [
+            1,
+            499,
+            4096
+          ]
+        }
+      ],
+      "subgraph": {
+        "stats": [
+          {
+            "compile_id": 0,
+            "device_func_count": 1,
+            "host_op_reason": {}
+          }
+        ]
+      },
+      "compile_and_runtime_passed": true
+    },
+    {
+      "seconds": 20,
+      "inputs": [
+        {
+          "dtype": "float32",
+          "name": "waveform",
+          "shape": [
+            1,
+            320000
+          ]
+        },
+        {
+          "dtype": "float32",
+          "name": "frame_mask",
+          "shape": [
+            1,
+            999
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "dtype": "float32",
+          "shape": [
+            1,
+            999,
+            4096
+          ]
+        }
+      ],
+      "subgraph": {
+        "stats": [
+          {
+            "compile_id": 0,
+            "device_func_count": 1,
+            "host_op_reason": {}
+          }
+        ]
+      },
+      "compile_and_runtime_passed": true
+    },
+    {
+      "seconds": 40,
+      "inputs": [
+        {
+          "dtype": "float32",
+          "name": "waveform",
+          "shape": [
+            1,
+            640000
+          ]
+        },
+        {
+          "dtype": "float32",
+          "name": "frame_mask",
+          "shape": [
+            1,
+            1999
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "dtype": "float32",
+          "shape": [
+            1,
+            1999,
+            4096
+          ]
+        }
+      ],
+      "subgraph": {
+        "stats": [
+          {
+            "compile_id": 0,
+            "device_func_count": 1,
+            "host_op_reason": {}
+          }
+        ]
+      },
+      "compile_and_runtime_passed": true
+    }
+  ],
+  "numerical_validation": {
+    "versions": {
+      "python": "3.12.3",
+      "torch": "2.14.1+cpu",
+      "transformers": "5.20.1",
+      "optimum-rbln": "0.12.1a3.dev14+ga6a709ed0",
+      "rebel-compiler": "0.11.0.post1",
+      "sentencepiece": "0.2.1",
+      "numpy": "2.5.4",
+      "soundfile": "0.14.0"
+    },
+    "encoder": [
+      {
+        "bucket_seconds": 5,
+        "valid_samples": 56080,
+        "valid_frames": 175,
+        "cpu_padding": {
+          "max_abs": 0.00215911865234375,
+          "mean_abs": 6.468330774315031e-07,
+          "relative_l2": 1.7575301971271041e-06,
+          "cosine": 0.9999999999984168
+        },
+        "cpu_vs_npu": {
+          "max_abs": 151.46620178222656,
+          "mean_abs": 0.017170040445016233,
+          "relative_l2": 0.10286851878551559,
+          "cosine": 0.9946980339326983
+        }
+      },
+      {
+        "bucket_seconds": 10,
+        "valid_samples": 56080,
+        "valid_frames": 175,
+        "cpu_padding": {
+          "max_abs": 0.0014495849609375,
+          "mean_abs": 5.726500152393652e-07,
+          "relative_l2": 1.2057096881654107e-06,
+          "cosine": 0.9999999999992175
+        },
+        "cpu_vs_npu": {
+          "max_abs": 152.08934020996094,
+          "mean_abs": 0.017487584961483834,
+          "relative_l2": 0.10299334743069999,
+          "cosine": 0.9946846517448842
+        }
+      },
+      {
+        "bucket_seconds": 20,
+        "valid_samples": 56080,
+        "valid_frames": 175,
+        "cpu_padding": {
+          "max_abs": 0.0014495849609375,
+          "mean_abs": 5.726500152393652e-07,
+          "relative_l2": 1.2057096881654107e-06,
+          "cosine": 0.9999999999992175
+        },
+        "cpu_vs_npu": {
+          "max_abs": 157.40184020996094,
+          "mean_abs": 0.01906889296140325,
+          "relative_l2": 0.1105283622101635,
+          "cosine": 0.9938816947550935
+        }
+      },
+      {
+        "bucket_seconds": 40,
+        "valid_samples": 56080,
+        "valid_frames": 175,
+        "cpu_padding": {
+          "max_abs": 0.0014495849609375,
+          "mean_abs": 5.726500152393652e-07,
+          "relative_l2": 1.2057096881654107e-06,
+          "cosine": 0.9999999999992175
+        },
+        "cpu_vs_npu": {
+          "max_abs": 162.58934020996094,
+          "mean_abs": 0.01966117491426648,
+          "relative_l2": 0.11655147952485473,
+          "cosine": 0.9931960465028483
+        }
+      }
+    ],
+    "audio_sha256": "9ce35224156f071ab58eb7feb8a5ceae600f6f9f353da2a6cbf797b6b1ac8a23",
+    "decoder_conversion": {
+      "max_abs": 7.62939453125e-06,
+      "mean_abs": 1.4386829973703966e-06,
+      "relative_l2": 3.29375254172892e-07,
+      "cosine": 0.9999999999999554
+    },
+    "decoder_cpu_vs_npu": {
+      "max_abs": 0.0364990234375,
+      "mean_abs": 0.005331468086220428,
+      "relative_l2": 0.0012044264443429788,
+      "cosine": 0.9999994065125941
+    },
+    "teacher_forced_decode": [
+      {
+        "step": 1,
+        "forced_token": 40,
+        "max_abs": 0.04616260528564453,
+        "mean_abs": 0.014540174818839617,
+        "relative_l2": 0.0020887056842082024,
+        "cosine": 0.999999604082787
+      },
+      {
+        "step": 2,
+        "forced_token": 5262,
+        "max_abs": 0.034883975982666016,
+        "mean_abs": 0.00997493468792776,
+        "relative_l2": 0.0017819549575665914,
+        "cosine": 0.9999995382762409
+      },
+      {
+        "step": 3,
+        "forced_token": 3401,
+        "max_abs": 0.0411529541015625,
+        "mean_abs": 0.011834019688602601,
+        "relative_l2": 0.0016608966477387568,
+        "cosine": 0.9999995488734845
+      }
+    ],
+    "repeated_prefill": {
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0
+    },
+    "greedy_transcription": {
+      "text": "concord returned to its place amidst the tents",
+      "token_ids": [
+        40,
+        5262,
+        3401,
+        40,
+        5262,
+        3270,
+        7699,
+        4,
+        3270,
+        2802,
+        276,
+        9755,
+        3270,
+        3401,
+        2802,
+        7699,
+        4,
+        276,
+        5262,
+        4,
+        1489,
+        276,
+        6500,
+        4,
+        7851,
+        9354,
+        3859,
+        40,
+        2802,
+        4,
+        3859,
+        1422,
+        1489,
+        7699,
+        6500,
+        276,
+        4,
+        276,
+        8345,
+        2802,
+        4,
+        276,
+        2802,
+        3401,
+        276,
+        6500
+      ],
+      "bucket_seconds": 5,
+      "audio_frames": 175,
+      "prompt_tokens": 178,
+      "stopped_on_eos": true
+    },
+    "reference_first_token": 40,
+    "rotary_relative_error": 8.79246179788511e-16,
+    "passed": false,
+    "failures": [
+      "bucket 5s NPU encoder parity failed: {'max_abs': 151.46620178222656, 'mean_abs': 0.017170040445016233, 'relative_l2': 0.10286851878551559, 'cosine': 0.9946980339326983}",
+      "bucket 10s NPU encoder parity failed: {'max_abs': 152.08934020996094, 'mean_abs': 0.017487584961483834, 'relative_l2': 0.10299334743069999, 'cosine': 0.9946846517448842}",
+      "bucket 20s NPU encoder parity failed: {'max_abs': 157.40184020996094, 'mean_abs': 0.01906889296140325, 'relative_l2': 0.1105283622101635, 'cosine': 0.9938816947550935}",
+      "bucket 40s NPU encoder parity failed: {'max_abs': 162.58934020996094, 'mean_abs': 0.01966117491426648, 'relative_l2': 0.11655147952485473, 'cosine': 0.9931960465028483}"
+    ]
+  },
+  "verification_exit_code": 1,
+  "decoder_comparison_scope": "CPU and NPU decoders receive the same NPU audio embeddings; this isolates decoder conversion and cache semantics.",
+  "timing_definition": {
+    "cpu_prepare": "local audio file read/decode, mono conversion, resampling and normalization",
+    "prepared_inference": "encoder + greedy decoder with prepared waveform",
+    "e2e": "cpu_prepare + prepared_inference; excludes artifact load, integrity checks and compilation"
+  },
+  "timings": {
+    "cpu_prepare": {
+      "samples_seconds": [
+        0.001594499684870243,
+        0.0009700777009129524,
+        0.0008948761969804764,
+        0.001067820005118847,
+        0.0008779764175415039
+      ],
+      "median_seconds": 0.0009700777009129524,
+      "p95_seconds": 0.0014891637489199637
+    },
+    "prepared_inference": {
+      "samples_seconds": [
+        0.5796434115618467,
+        0.5793536771088839,
+        0.5797927649691701,
+        0.5800465289503336,
+        0.5792971355840564
+      ],
+      "median_seconds": 0.5796434115618467,
+      "p95_seconds": 0.5799957761541009
+    },
+    "e2e": {
+      "samples_seconds": [
+        0.581237911246717,
+        0.5803237548097968,
+        0.5806876411661506,
+        0.5811143489554524,
+        0.5801751120015979
+      ],
+      "median_seconds": 0.5806876411661506,
+      "p95_seconds": 0.5812131987884641
+    }
+  },
+  "warmup_requests": 1,
+  "measured_requests": 5,
+  "host_trace": "separate instrumented host-only request; no device-timeline or zero-bubble claim",
+  "negative_checks": {
+    "negative_device": {
+      "rejected": true,
+      "runtime_creations": 0
+    },
+    "unknown_language": {
+      "rejected": true,
+      "runtime_creations": 0
+    },
+    "over_bucket": {
+      "rejected": true,
+      "runtime_creations": 0
+    },
+    "missing_tokenizer": {
+      "rejected": true
+    },
+    "obsolete_finite_mask": {
+      "rejected": true
+    }
+  },
+  "finite_metric_guard": {
+    "nan_rejected": true,
+    "inf_rejected": true,
+    "empty_rejected": true
+  },
+  "precision_diagnostics": {
+    "CPU_FP16_vs_CPU_FP32_relative_l2": 0.013277939484564136,
+    "CPU_BF16_vs_CPU_FP32_relative_l2": 0.12312420649757433,
+    "NPU_F32_graph_vs_CPU_BF16_relative_l2": 0.06792277422831236
+  },
+  "limitations": [
+    "Strict encoder FP32 numerical parity failed on every recorded bucket.",
+    "One utterance is not an accuracy evaluation across languages or durations.",
+    "No device profiler timeline was collected."
+  ],
+  "cpu_full_pipeline": {
+    "encoder_dtype": "float32",
+    "decoder_dtype": "float32",
+    "text": "concord returned to its place amidst the tents",
+    "token_ids": [
+      40,
+      5262,
+      3401,
+      40,
+      5262,
+      3270,
+      7699,
+      4,
+      3270,
+      2802,
+      276,
+      9755,
+      3270,
+      3401,
+      2802,
+      7699,
+      4,
+      276,
+      5262,
+      4,
+      1489,
+      276,
+      6500,
+      4,
+      7851,
+      9354,
+      3859,
+      40,
+      2802,
+      4,
+      3859,
+      1422,
+      1489,
+      7699,
+      6500,
+      276,
+      4,
+      276,
+      8345,
+      2802,
+      4,
+      276,
+      2802,
+      3401,
+      276,
+      6500
+    ],
+    "stopped_on_eos": true,
+    "decoder_seconds": 8.497384116984904,
+    "token_ids_equal_to_npu": true,
+    "text_equal_to_npu": true
+  }
+}
