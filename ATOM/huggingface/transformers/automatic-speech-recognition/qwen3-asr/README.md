@@ -71,6 +71,35 @@ encoder = RBLNQwen3ASREncoder.from_pretrained(
 The result contains projected audio embeddings of width 2048. Unprojected
 encoder features and language-identification heads are separate interfaces.
 
+## Reproduce the encoder checks
+
+Use `verify_encoder.py` with a saved parent model and a 16 kHz audio file or
+public audio URL. The default CPU reference is **BF16 eager**, matching the
+recorded artifact's weight precision. Reference loading uses the immutable model
+revision above; `--source-model` and `--source-revision` allow another native
+Qwen3-ASR checkpoint, with a full commit SHA required.
+
+```bash
+python verify_encoder.py \
+  --model qwen3-asr-smoke \
+  --audio speech.flac \
+  --device 0 \
+  --output encoder-validation.json
+```
+
+`--reference-dtype float32` and `--reference-attention sdpa` select additional
+CPU references. The script loads CPU weights before blocking compiler entry
+points and Hugging Face weight loaders. It then reloads the parent and standalone
+encoder, checks actual NPU `SyncRuntime` calls, and compares single and mixed
+batch inputs around the eight-second window boundary. It records shape checks,
+cosine similarity, relative L2 and strict `allclose` without changing tolerance.
+
+Exit code zero means the **functional** reload/runtime/window/shape checks
+passed. The separate `strict_numeric_parity` Boolean can still be false and
+must be inspected. The output also records whether the encoder graph hash
+matches the adjacent validation record. An immutable CPU reference and matching
+architecture config alone do not prove an unrecorded artifact's weight identity.
+
 ## Recorded validation
 
 [validation.json](validation.json) records the source revision, input and artifact
