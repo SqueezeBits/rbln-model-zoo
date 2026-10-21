@@ -1,0 +1,13 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1+cpu
+torchvision==0.29.1+cpu
+transformers==5.20.1
+diffusers==0.41.0
+accelerate>=1.0.1
+packaging>=24.1
+typing-extensions>=4.5
+numpy>=2,<3
+pillow>=11
+soundfile>=0.13
+scipy>=1.14
+librosa>=0.11

@@ -1,0 +1,507 @@
+{
+  "date": "2026-10-21",
+  "target": "RBLN-CA25",
+  "num_devices": 4,
+  "optimum_source_commit": "a6a709ed0727f87cabfebf191b6a89b141f80731",
+  "model_revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "precision": "bfloat16",
+  "image_soft_tokens": 70,
+  "audio_layout": "selector",
+  "full_default_compile": {
+    "entrypoint": "Pinned optimum-rbln examples/multimodal-embedding/run_embedding_gemma2.py compile",
+    "graph_count": 12,
+    "text_buckets": [
+      32,
+      64,
+      96,
+      128,
+      288,
+      352,
+      512
+    ],
+    "vision_patches": 630,
+    "audio_buckets": [
+      64,
+      128,
+      1056,
+      1536
+    ],
+    "all_binary_targets_and_device_counts_inspected": true,
+    "reference": "Official Transformers AutoModel on CPU, matching BF16 dtype and masked mean pooling",
+    "validation": {
+      "passed": true,
+      "implementation": "native optimum-rbln",
+      "model_revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+      "versions": {
+        "optimum-rbln": "0.1.dev677+ga6a709ed0",
+        "torch": "2.14.1+cpu",
+        "transformers": "5.20.1",
+        "torchvision": "0.29.1+cpu",
+        "rebel-compiler": "0.11.0.post1",
+        "numpy": "2.5.2"
+      },
+      "cases": [
+        {
+          "name": "english",
+          "input_sha256": "bce110c20f17b1992a44fce5d5666a472e231d58aa9b184331252a4b8ec44f96",
+          "graphs": [
+            "text:32"
+          ],
+          "stages": {
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9999691759283863,
+          "max_absolute_error": 0.0008694380521774292,
+          "norm": 0.9999999398994501
+        },
+        {
+          "name": "korean",
+          "input_sha256": "42dd52c2ee625fe4137aed17dad0fe92c78349850e04ab398d401653abf5d840",
+          "graphs": [
+            "text:32"
+          ],
+          "stages": {
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9999692629553428,
+          "max_absolute_error": 0.0009637586772441864,
+          "norm": 1.0000001270999908
+        },
+        {
+          "name": "document",
+          "input_sha256": "46c7d4f13ad3bd6c77950f60cae70c5c5d63d2158b9ed387ee52dc41ff615f15",
+          "graphs": [
+            "text:32"
+          ],
+          "stages": {
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9999411686248886,
+          "max_absolute_error": 0.0011670133098959923,
+          "norm": 0.9999999929265253
+        },
+        {
+          "name": "image_wide",
+          "input_sha256": "a04c49ec87736ea65f9d4d16a242af9a2c241e492e74b1a0e5c4dd01bc5b1ebc",
+          "graphs": [
+            "vision:630",
+            "text:64"
+          ],
+          "stages": {
+            "vision": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9998220983025708,
+          "max_absolute_error": 0.0021886900067329407,
+          "norm": 1.000000029569999
+        },
+        {
+          "name": "image_tall",
+          "input_sha256": "b080981ef2ed8d129d51868f27ff1ed4517fa559caf4a4cb4699bfa5bce064eb",
+          "graphs": [
+            "vision:630",
+            "text:64"
+          ],
+          "stages": {
+            "vision": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9998783039976689,
+          "max_absolute_error": 0.001933995634317398,
+          "norm": 1.0000000205628263
+        },
+        {
+          "name": "audio_short",
+          "input_sha256": "ab5eef88a00f50685226b400ee28edc088363acdd3e8768e62cba108403f7dbc",
+          "graphs": [
+            "audio:64",
+            "text:32"
+          ],
+          "stages": {
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9998564178824322,
+          "max_absolute_error": 0.0019131340086460114,
+          "norm": 1.0000000417995294
+        },
+        {
+          "name": "audio_long",
+          "input_sha256": "7ab2274c4be25e65b3ecdae5ad167636e3f141635dab5f0f92ef5eeac3adcce4",
+          "graphs": [
+            "audio:128",
+            "text:32"
+          ],
+          "stages": {
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9997082417124665,
+          "max_absolute_error": 0.003370732069015503,
+          "norm": 0.9999999501701611
+        },
+        {
+          "name": "mixed",
+          "input_sha256": "155ef06ab1189dcf05f802415b9a96d0b965c88703e2835f24b5a19a11182be5",
+          "graphs": [
+            "vision:630",
+            "audio:64",
+            "text:96"
+          ],
+          "stages": {
+            "vision": "rbln",
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9999283025339505,
+          "max_absolute_error": 0.0017733126878738403,
+          "norm": 1.0000000069284796
+        },
+        {
+          "name": "text",
+          "input_sha256": "e9a94db663efcafb72d50e87f7873c142501b643223e71d190e310f741b5e141",
+          "graphs": [
+            "text:32"
+          ],
+          "stages": {
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9999583770938222,
+          "max_absolute_error": 0.0014922916889190674,
+          "norm": 1.000000122003893
+        },
+        {
+          "name": "photo",
+          "input_sha256": "3896d71bf1a9cb13ffa19fa1220aa857eabc0427d2cf03c779028f919b142de8",
+          "graphs": [
+            "vision:630",
+            "text:96"
+          ],
+          "stages": {
+            "vision": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9988199262159666,
+          "max_absolute_error": 0.0055217493791133165,
+          "norm": 1.0000001151349949
+        },
+        {
+          "name": "speech",
+          "input_sha256": "7ee97f6c009d16ecf0dadecd9d90c1431e74d117fb6f60bd4270fa2c1f4fe60b",
+          "graphs": [
+            "audio:1056",
+            "text:288"
+          ],
+          "stages": {
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9999674622786726,
+          "max_absolute_error": 0.0009468384087085724,
+          "norm": 1.000000030554497
+        },
+        {
+          "name": "mixed_real",
+          "input_sha256": "9bb9b095737aa8430a6bcb61c2fa783b119388520ba791dd35c4342b8ea16df6",
+          "graphs": [
+            "vision:630",
+            "audio:1056",
+            "text:352"
+          ],
+          "stages": {
+            "vision": "rbln",
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9998718948891965,
+          "max_absolute_error": 0.002156723290681839,
+          "norm": 1.000000091231566
+        },
+        {
+          "name": "speech_truncated_8s",
+          "input_sha256": "45d6325a61fba187430048ee6e6ae02da3d247ee6cb31aa3d6fd835aff34e9ef",
+          "graphs": [
+            "audio:1056",
+            "text:288"
+          ],
+          "stages": {
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.999961992087166,
+          "max_absolute_error": 0.0010361764580011368,
+          "norm": 1.0000000411105072
+        },
+        {
+          "name": "speech_reversed",
+          "input_sha256": "06de75207e949f161df7c03b765a79cf34986c17d85c17cb7bf3f1d2907d804b",
+          "graphs": [
+            "audio:1056",
+            "text:288"
+          ],
+          "stages": {
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9999227718777507,
+          "max_absolute_error": 0.0021064393222332,
+          "norm": 1.00000007744936
+        },
+        {
+          "name": "mixed_photo_truncated_8s",
+          "input_sha256": "15159fdc7a800904ba943ce3157c21101c558136c027290a5029985e44c70a76",
+          "graphs": [
+            "vision:630",
+            "audio:1056",
+            "text:288"
+          ],
+          "stages": {
+            "vision": "rbln",
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.999889916829189,
+          "max_absolute_error": 0.0017667636275291443,
+          "norm": 1.0000001018027556
+        },
+        {
+          "name": "two_images",
+          "input_sha256": "e14c0536d4632b37905c682a9e55a4bd48dd0682553ac383de019e4e05d3d613",
+          "graphs": [
+            "vision:630",
+            "vision:630",
+            "text:128"
+          ],
+          "stages": {
+            "vision": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9998596746605452,
+          "max_absolute_error": 0.0024784039705991745,
+          "norm": 0.9999999833035038
+        },
+        {
+          "name": "two_audio",
+          "input_sha256": "770b94f2da80a75dae414c7e65e8df0bc581a32ffd64e6159a32a7ea13fb40cf",
+          "graphs": [
+            "audio:64",
+            "audio:64",
+            "text:64"
+          ],
+          "stages": {
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9997477745939107,
+          "max_absolute_error": 0.002868950366973877,
+          "norm": 0.9999999297836526
+        },
+        {
+          "name": "mixed_media_only",
+          "input_sha256": "4363115bb628a06346e2f1c9662046441c75c4f9c175ec09b723b66e6655b003",
+          "graphs": [
+            "vision:630",
+            "audio:64",
+            "text:96"
+          ],
+          "stages": {
+            "vision": "rbln",
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.999506223098912,
+          "max_absolute_error": 0.004096578806638718,
+          "norm": 0.9999999521608435
+        },
+        {
+          "name": "dimensions_128",
+          "passed": true
+        },
+        {
+          "name": "dimensions_256",
+          "passed": true
+        },
+        {
+          "name": "dimensions_512",
+          "passed": true
+        },
+        {
+          "name": "over_capacity_rejected_before_execution",
+          "passed": true
+        }
+      ],
+      "npu": "RBLN-CA25",
+      "num_devices": 4,
+      "host_parameters": 134217728,
+      "reference_parameters": 744371488
+    }
+  },
+  "new_recipe_clean_environment": {
+    "entrypoint": "compile.py --text-buckets 128 --audio-buckets 64",
+    "fresh_nested_output_parent": true,
+    "graph_count": 3,
+    "validation": {
+      "passed": true,
+      "implementation": "native optimum-rbln",
+      "model_revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+      "versions": {
+        "optimum-rbln": "0.1.dev677+ga6a709ed0",
+        "torch": "2.14.1+cpu",
+        "transformers": "5.20.1",
+        "torchvision": "0.29.1+cpu",
+        "rebel-compiler": "0.11.0.post1",
+        "numpy": "2.5.2"
+      },
+      "cases": [
+        {
+          "name": "english",
+          "input_sha256": "bce110c20f17b1992a44fce5d5666a472e231d58aa9b184331252a4b8ec44f96",
+          "graphs": [
+            "text:128"
+          ],
+          "stages": {
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9999677476160306,
+          "max_absolute_error": 0.0009589605033397675,
+          "norm": 0.9999999753614348
+        },
+        {
+          "name": "image_wide",
+          "input_sha256": "a04c49ec87736ea65f9d4d16a242af9a2c241e492e74b1a0e5c4dd01bc5b1ebc",
+          "graphs": [
+            "vision:630",
+            "text:128"
+          ],
+          "stages": {
+            "vision": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9998226805813812,
+          "max_absolute_error": 0.0022869035601615906,
+          "norm": 1.0000001350614371
+        },
+        {
+          "name": "audio_short",
+          "input_sha256": "ab5eef88a00f50685226b400ee28edc088363acdd3e8768e62cba108403f7dbc",
+          "graphs": [
+            "audio:64",
+            "text:128"
+          ],
+          "stages": {
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9998593871966823,
+          "max_absolute_error": 0.002058669924736023,
+          "norm": 0.9999999971064284
+        },
+        {
+          "name": "mixed",
+          "input_sha256": "155ef06ab1189dcf05f802415b9a96d0b965c88703e2835f24b5a19a11182be5",
+          "graphs": [
+            "vision:630",
+            "audio:64",
+            "text:128"
+          ],
+          "stages": {
+            "vision": "rbln",
+            "audio": "rbln",
+            "text": "rbln"
+          },
+          "passed": true,
+          "finite": true,
+          "cosine_similarity": 0.9999278986221978,
+          "max_absolute_error": 0.0017874985933303833,
+          "norm": 1.0000000530134343
+        },
+        {
+          "name": "dimensions_128",
+          "passed": true
+        },
+        {
+          "name": "dimensions_256",
+          "passed": true
+        },
+        {
+          "name": "dimensions_512",
+          "passed": true
+        },
+        {
+          "name": "over_capacity_rejected_before_execution",
+          "passed": true
+        }
+      ],
+      "npu": "RBLN-CA25",
+      "num_devices": 4,
+      "host_parameters": 134217728,
+      "reference_parameters": 744371488
+    },
+    "compile_only_additional_smoke_graphs": 3,
+    "inference_cli": {
+      "shape": [
+        1,
+        256
+      ],
+      "norm": 1.0,
+      "stages": {
+        "vision": "rbln",
+        "audio": "rbln",
+        "text": "rbln"
+      },
+      "host_trace_slices": 14,
+      "parsed_by": "Official Perfetto TraceProcessor"
+    }
+  },
+  "cli_checks": {
+    "help_and_invalid_arguments": 14,
+    "missing_corrupt_manifest_and_graph_hash_inventory": 10
+  },
+  "limitations": [
+    "CR13 recipe has not been physically recompiled in this run.",
+    "CA25 SDK 0.11.0.post1 native device profiler aborts; host spans do not prove zero device-internal bubbles.",
+    "No new H200/CR13 performance comparison is established by this validation."
+  ]
+}
